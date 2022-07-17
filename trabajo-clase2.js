@@ -4,75 +4,64 @@
 // Si la nota es mayor a 10 o menor a 0, devolver que no es una nota válida
 // En caso contrario, si la nota es igual a 10 calificar con excelente. Si es mayor a 7 calificar con promocionado, de ser mayor o igual a 4 considerar aprobado y menor a 4 como desaprobado.
 
+let nota = 0
+let acum = 0
+
 let alumno = prompt("Ingrese su Apellido registrado en oficina alumnos")
-if(alumno == ""){
-    alert("ERROR. Ingresa tu apellido para poder conocer tu nota!")
-    console.log("ERROR. Ingresa tu apellido para poder conocer tu nota!")
+if (alumno =="") {
+    alert("ERROR. Ingresa tu apellido para poder conocer el estado de tu cursada!")
+    console.log("ERROR. Ingresa tu apellido para poder conocer el estado de tu cursada!")
+} 
+else if (alumno != "") {
+    let cantNotas = prompt("Ingrese la cantidad de notas obtenias durante la cursada. (Trabajos prácticos, informes, parciales y finales.")
+    for (let i=0; i<cantNotas; i++) {
+        nota = parseInt(prompt(`Ingrese la nota ${i+1}`))
+        acum = acum + nota
+        console.log("acumulador parcial" + acum)
+        console.log("La suma total es " + acum)
+        if ( nota >= 0 && nota < 4) {
+            alert("Reprobado")
+            console.log("Reprobado")
+        }
+        if ( nota >= 4 && nota < 7) {
+            alert("Aprobado")
+            console.log("Aprobado")
+        }
+        if ( nota >= 7 && nota <9) {
+            alert("Muy bien!")
+            console.log("Muy bien!")
+        }
+        if ( nota >= 9 && nota <=10) {
+            alert("Excelente!")
+            console.log("Excelente!")
+        }
+        else if (nota < 0 || nota > 10) {
+            alert("La nota es invalida")
+            console.log("La nota es invalida")
+        }
+    }
+
+    let prom = acum / cantNotas
+    console.log("El promedio es " + prom)
+
+    if (prom < 4){
+        alert("Reprobado. Tu promedio de cursada es "+prom+". Solicitar nueva fecha de examen con tu profesor.")
+        console.log("Reprobado. Tu promedio de cursada es "+prom+". Solicitar nueva fecha de examen con tu profesor.")
+    }
+    if (prom >= 4 && prom < 7){
+        alert("Aprobado. Tu promedio de cursada es "+prom+". Éxitos en el siguiente curso!")
+        console.log("Aprobado. Tu promedio de cursada es "+prom+". Éxitos en el siguiente curso!")
+    }
+    if (prom >= 7 && prom < 9){
+        alert("Muy buena cursada! Tu promedio de cursada es "+prom+". Éxitos en el siguiente curso")
+        console.log("Muy buena cursada! Tu promedio de cursada es "+prom+". Éxitos en el siguiente curso")
+    }
+    if (prom >= 9 && prom <= 10){
+        alert("Excelente cursada! Tu promedio de cursada es "+prom+". Tus examenes fueron extraordinarios. Éxitos en el siguiente curso!")
+        console.log("Excelente cursada! Tu promedio de cursada es "+prom+". Tus examenes fueron extraordinarios. Éxitos en el siguiente curso!")
+        confirm("Te gustaría ser tutor en el siguiente curso?")
+    }
 }
 
-let nota1 = parseInt(prompt("Ingrese la nota obtenida en Primer Parcial")) 
-if (nota1 < 0){
-    alert("La nota es invalida")
-    console.log("La nota es invalida")
-}
-else if (nota1 > 10){
-    alert("La nota es invalida")
-    console.log("La nota es invalida")
-}
-else if (nota1 < 4){
-    alert("Desaprobado")
-    console.log("Desaprobado")
-}
-else if (nota1 >= 4){
-    alert("Aprobado")
-    console.log("Aprobado")
-}
-else if (nota1 > 7){
-    alert("Promocionado")
-    console.log("Promocionado")
-}
-else if (nota1 = 10){
-    alert("Excelente!")
-    console.log("Excelente!")
-}
 
-let nota2 = parseInt(prompt("Ingrese la nota obtenida en Segundo Parcial"))
-if (nota2 < 0){
-    alert("La nota es invalida")
-    console.log("La nota es invalida")
-}
-else if (nota2 > 10){
-    alert("La nota es invalida")
-    console.log("La nota es invalida")
-}
-else if (nota2 < 4){
-    alert("Desaprobado")
-    console.log("Desaprobado")
-}
-else if (nota2 >= 4){
-    alert("Aprobado")
-    console.log("Aprobado")
-}
-else if (nota2 > 7){
-    alert("Promocionado")
-    console.log("Promocionado")
-}
-else if (nota2 = 10){
-    alert("Excelente!")
-    console.log("Excelente!")
-}
 
-let promedio = ((nota1+nota2)/2)
-
-if (promedio > 9){
-    alert("El promedio del alumno "+alumno+" es "+promedio+". Excelente cursada!")
-    console.log("El promedio del alumno "+alumno+" es "+promedio+". Excelente cursada!")
-}
-else if (promedio >= 7 < 8){
-    alert("El promedio del alumno "+alumno+" es "+promedio+". Muy buena cursada!")
-    console.log("El promedio del alumno "+alumno+" es "+promedio+". Muy buena cursada!")
-}
-else if (promedio < 7){
-    alert("El promedio del alumno "+alumno+" es "+promedio+". Solicitar fecha de recuperatorio con tu tutor. Tendras revancha!")
-    console.log("El promedio del alumno "+alumno+" es "+promedio+". Solicitar fecha de recuperatorio con tu tutor. Tendras revancha!")
-}
